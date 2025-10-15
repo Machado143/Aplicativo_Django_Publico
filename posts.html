@@ -1,0 +1,60 @@
+<div
+  hx-ext="client-side-templates"
+  hx-get="http://127.0.0.1:8000/api/csrf/"
+  hx-trigger="load"
+  handlebars-template="postarTemplate"
+>
+  <template id="postarTemplate">
+    <form
+      hx-post="http://127.0.0.1:8000/postar/"
+      hx-encoding="multipart/form-data"
+      hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
+    >
+
+    
+      <div id="div_id_autor" class="mb-3">
+        <label for="id_autor" class="form-label requiredField">
+          Autor<span class="asteriskField">*</span>
+        </label>
+        <input
+          type="text"
+          name="autor"
+          maxlength="40"
+          class="textinput form-control"
+          required=""
+          id="id_autor"
+        />
+      </div>
+      <div id="div_id_imagem" class="mb-3">
+        <label for="id_imagem" class="form-label requiredField">
+          Imagem<span class="asteriskField">*</span>
+        </label>
+        <div>
+          <input
+            type="file"
+            name="imagem"
+            class="form-control"
+            accept="image/*"
+            id="id_imagem"
+            required=""
+          />
+        </div>
+      </div>
+      <div id="div_id_conteudo" class="mb-3">
+        <label for="id_conteudo" class="form-label requiredField">
+          Conteudo<span class="asteriskField">*</span>
+        </label>
+        <textarea
+          name="conteudo"
+          cols="40"
+          rows="10"
+          class="textarea form-control"
+          required=""
+          id="id_conteudo"
+        ></textarea>
+      </div>
+
+      <input type="submit" value="Postar" />
+    </form>
+  </template>
+</div>
